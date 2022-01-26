@@ -3,9 +3,9 @@ var express = require('express');
 var mongoose=require('mongoose');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var compression = require('compression');
-var helmet = require('helmet');
-var cors=require('cors');
+// var compression = require('compression');
+// var helmet = require('helmet');
+// var cors=require('cors');
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGODB_URI.toString(),{ useNewUrlParser: true , useUnifiedTopology: true});
@@ -16,10 +16,10 @@ var indexRouter = require('./routes/index');
 var catalogRouter = require('./routes/catalog');
 
 var app = express();
-//app.use(helmet({ contentSecurityPolicy: false, }))
-app.use(cors({
-  origin: '*'
-}));
+// app.use(helmet({ contentSecurityPolicy: false, }))
+// app.use(cors({
+//   origin: '*'
+// }));
 
 
 // view engine setup
@@ -30,12 +30,12 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(compression());
+// app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-app.use('/catalog',cors(),catalogRouter);
+app.use('/catalog',catalogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
