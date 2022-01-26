@@ -7,7 +7,7 @@ var compression = require('compression');
 var helmet = require('helmet');
 require('dotenv').config();
 
-mongoose.connect(`'${process.env.MONGODB_URI}'`,{ useNewUrlParser: true , useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI.toString(),{ useNewUrlParser: true , useUnifiedTopology: true});
 var db=mongoose.connection;
 db.on('error',console.error.bind(console,'MongoDB connection error'))
 
