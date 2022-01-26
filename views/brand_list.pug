@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+
+    header.main-header
+        div.header-container
+            h1 #{title} #[span.count (#{brands.length})]
+        button.btn-update #[a(href='./brand/create') &#43 Brands] 
+    div.list
+     each brand in brands 
+        div.card-container.basics-card
+            a(href=brand.url)
+            img(src=brand.imgURL, alt=brand.name)   
+            h1=brand.name

@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    header.main-header
+        div.header-container
+        button.btn-update #[a(href=item._id+'/update') Update Item] 
+           
+    div.list.item-detail
+        img.img-container(src=item.imgURL alt=item.name)
+        div.card.item-card.card-container 
+            h2=item.brand.name 
+            h3=item.name
+            h1 #{item.price} $
+            h4 QTY: #{item.qty}
+            p.item-desc #[em #{item.desc}]
+            div.item-categories 
+                h3 Categories 
+                div.item-categories-buttons
+                 each cat in item.category
+                    button.btn-item-ctg.btn-update #[a(href=cat.url) #{cat.name}]

@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+
+    header.main-header
+        div.header-container
+            h1 #{title} #[span.count (#{items.length})]
+        button.btn-update #[a(href="./item/create") &#43 Item] 
+    
+    div.list 
+     each item in items 
+        div.card-container.item_list_card
+            a(href=item.url)
+            img(src=item.imgURL alt=item.name)
+            div.list-details
+                h2 #{item.price} $ 
+                h4 #{item.brand.name} - #{item.name}
+                p Qty: #{item.qty}                      
+            div.item-categories-buttons
+             each cat in item.category
+                button.btn-item-ctg.btn-update #[a(href=cat.url) #{cat.name}]
+        

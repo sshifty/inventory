@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+
+    header.main-header
+        div.header-container
+            h1 #{title} #[span.count (#{category_list.length})]
+        button.btn-update #[a(href="./category/create") &#43 Category]  
+    div.list
+     each cat in category_list
+        div.card-container.basics-card.category-card
+            a(href=cat.url)
+            div.list-img-container
+                img(src=cat.imgURL) 
+            h1  #{cat.name}

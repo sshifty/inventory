@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+    - const nameErr=(err===undefined?null:err[0]);
+    - const imgErr=(imgInvalid===undefined?null:imgInvalid);
+    div.form-container
+        form.form.category-form(action='' method='POST' enctype="multipart/form-data")
+            div.input-wrapper
+                label(for="name") Name:
+                input(type="text" id='name' name='name' placeholder="Name" required value=(name===undefined?'':name))
+            if nameErr
+                span.error #{err[0].msg}            
+            div.input-wrapper.file-upload-wrapper
+                label(for="image") Image: 
+                input(type="file" name="image" id="image")
+            if imgErr
+                span.error #{imgErr}            
+            button(type="submit").btn-submit Submit

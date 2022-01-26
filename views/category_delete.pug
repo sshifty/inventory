@@ -1,0 +1,12 @@
+extends layout 
+
+block content 
+
+    if items
+        h1 You have to delete these items to delete this category 
+        hr
+        dl 
+         each item in items 
+            dt 
+                a(href=item.url) #{item.name} 
+            dd #{item.desc}

@@ -1,0 +1,46 @@
+extends layout 
+
+block content 
+    -if(selectedCat===undefined) selectedCat=[];
+    - const imgErr=(imgInvalid===undefined?null:imgInvalid);
+    
+    div.form-container
+        form.form.category-form(action='' method='POST' enctype="multipart/form-data")
+            div.input-wrapper
+                label(for='brand') Select Brand: 
+                select#brand.select-control(type='select',placeholder='Select Brand' name='brand' required='true' )
+                 for brand in brands 
+                  option(value=brand._id selected=(selected_brand===undefined?false:selected_brand.toString()===brand._id.toString()?'selected':false)) #{brand.name}
+            div.input-wrapper
+                label(for="name") Name:
+                input(type="text" id='name' name='name' placeholder="Name" required value=(name===undefined?'':name))
+            if nameErr
+                span.error #{nameErr}            
+            div.input-wrapper
+                label(for='price') Price:
+                input(type="number" id="number" name="price" placeholder="Price" min=0 max=1000 required value=(price===undefined?'':price))
+            if priceErr
+                span.error #{priceErr}
+            div.input-wrapper
+                label(for='qty') Quantity:
+                input(type="number" id="qty" name="qty" placeholder="Quantity" min=0 max=1000 required value=(qty===undefined?'':qty))
+            if qtyErr
+                span.error #{qtyErr}
+            div.input-wrapper
+                label(for='desc') Description:
+                textarea(name="desc" id="desc" placeholder="Description" maxLength=200 value=(desc===undefined?'':desc)) #{desc?desc:'Description'}
+            if descErr
+                span.error #{descErr}
+            label Categories
+            div.checkbox-wrapper
+                each cat in categories
+                    div.checkbox-category
+                        input.check-input(type="checkbox" name="category" value=cat._id id=cat.name
+                        checked=(selectedCat.indexOf(cat._id.toString())===-1?false:true))
+                        label.check-label(for=cat.name) #{cat.name}
+            div.input-wrapper.file-upload-wrapper
+                label(for="image") Image: 
+                input(type="file" name="image" id="image")
+            if imgErr
+                span.error #{imgErr}            
+            button(type="submit").btn-submit Submit     

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(action='' method='POST' enctype="multipart/form-data")
+    input(type="file" name="avatar" )
+    button(type="submit") Submit
+  h1=(url===undefined?"xD":url)

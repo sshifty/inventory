@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header.header 
+      img.img-logo(src="/images/logo.png" alt="logo")
+      div.header-container
+        a(href="/catalog/items").nav-item Items
+        a(href="/catalog/brands").nav-item Brands
+        a(href="/catalog/categories").nav-item Categories
+    block content
+    footer.footer 
+      div.footer-container
+        a(href="google.com") #[img(src='https://res.cloudinary.com/dppzpagiy/image/upload/v1643218891/GitHub-Mark-64px_utzxkb.png')]        
+        p This app is a mock inventory site built with NodeJS, Express, and MongoDB. It was made for The Odin Project's NodeJs curriculum.
+
