@@ -35,6 +35,8 @@ img{
   max-height: 400px;
 }
 body{
+  display: flex;
+  flex-direction: column;
   background-color: var(--bg-grey);
 }
 .btn-update{
